@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicle">
+      <h2 data-cy="vehicleDetailsHeading"><span>Vehicle</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ vehicle.id }}</span>
+        </dd>
+        <dt><span>Created</span></dt>
+        <dd>
+          <span>{{ vehicle.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Edited</span></dt>
+        <dd>
+          <span>{{ vehicle.edited | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ vehicle.name }}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+          <span>{{ vehicle.model }}</span>
+        </dd>
+        <dt><span>Manufacturer</span></dt>
+        <dd>
+          <span>{{ vehicle.manufacturer }}</span>
+        </dd>
+        <dt><span>Cost In Credits</span></dt>
+        <dd>
+          <span>{{ vehicle.costInCredits }}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+          <span>{{ vehicle.length }}</span>
+        </dd>
+        <dt><span>Max Atmosphering Speed</span></dt>
+        <dd>
+          <span>{{ vehicle.maxAtmospheringSpeed }}</span>
+        </dd>
+        <dt><span>Crew</span></dt>
+        <dd>
+          <span>{{ vehicle.crew }}</span>
+        </dd>
+        <dt><span>Passengers</span></dt>
+        <dd>
+          <span>{{ vehicle.passengers }}</span>
+        </dd>
+        <dt><span>Cargo Capacity</span></dt>
+        <dd>
+          <span>{{ vehicle.cargoCapacity }}</span>
+        </dd>
+        <dt><span>Consumables</span></dt>
+        <dd>
+          <span>{{ vehicle.consumables }}</span>
+        </dd>
+        <dt><span>Vehicle Class</span></dt>
+        <dd>
+          <span>{{ vehicle.vehicleClass }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

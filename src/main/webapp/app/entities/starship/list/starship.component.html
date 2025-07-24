@@ -1,0 +1,81 @@
+<div>
+  <h2 id="page-heading" data-cy="StarshipHeading">
+    <span>Starships</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="starships?.length === 0">
+    <span>No starships found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="starships && starships.length > 0">
+    <table class="table table-striped table-hover" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Id</span></th>
+          <th scope="col"><span>Created</span></th>
+          <th scope="col"><span>Edited</span></th>
+          <th scope="col"><span>Name</span></th>
+          <th scope="col"><span>Model</span></th>
+          <th scope="col"><span>Manufacturer</span></th>
+          <th scope="col"><span>Cost In Credits</span></th>
+          <th scope="col"><span>Length</span></th>
+          <th scope="col"><span>Max Atmosphering Speed</span></th>
+          <th scope="col"><span>Crew</span></th>
+          <th scope="col"><span>Passengers</span></th>
+          <th scope="col"><span>Cargo Capacity</span></th>
+          <th scope="col"><span>Consumables</span></th>
+          <th scope="col"><span>Hyperdrive Rating</span></th>
+          <th scope="col"><span>Mglt</span></th>
+          <th scope="col"><span>Startship Class</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let starship of starships; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/starship', starship.id, 'view']">{{ starship.id }}</a>
+          </td>
+          <td>{{ starship.created | formatMediumDatetime }}</td>
+          <td>{{ starship.edited | formatMediumDatetime }}</td>
+          <td>{{ starship.name }}</td>
+          <td>{{ starship.model }}</td>
+          <td>{{ starship.manufacturer }}</td>
+          <td>{{ starship.costInCredits }}</td>
+          <td>{{ starship.length }}</td>
+          <td>{{ starship.maxAtmospheringSpeed }}</td>
+          <td>{{ starship.crew }}</td>
+          <td>{{ starship.passengers }}</td>
+          <td>{{ starship.cargoCapacity }}</td>
+          <td>{{ starship.consumables }}</td>
+          <td>{{ starship.hyperdriveRating }}</td>
+          <td>{{ starship.mglt }}</td>
+          <td>{{ starship.startshipClass }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/starship', starship.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

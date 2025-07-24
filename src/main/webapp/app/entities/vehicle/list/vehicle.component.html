@@ -1,0 +1,77 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleHeading">
+    <span>Vehicles</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicles?.length === 0">
+    <span>No vehicles found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vehicles && vehicles.length > 0">
+    <table class="table table-striped table-hover" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Id</span></th>
+          <th scope="col"><span>Created</span></th>
+          <th scope="col"><span>Edited</span></th>
+          <th scope="col"><span>Name</span></th>
+          <th scope="col"><span>Model</span></th>
+          <th scope="col"><span>Manufacturer</span></th>
+          <th scope="col"><span>Cost In Credits</span></th>
+          <th scope="col"><span>Length</span></th>
+          <th scope="col"><span>Max Atmosphering Speed</span></th>
+          <th scope="col"><span>Crew</span></th>
+          <th scope="col"><span>Passengers</span></th>
+          <th scope="col"><span>Cargo Capacity</span></th>
+          <th scope="col"><span>Consumables</span></th>
+          <th scope="col"><span>Vehicle Class</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of vehicles; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicle', vehicle.id, 'view']">{{ vehicle.id }}</a>
+          </td>
+          <td>{{ vehicle.created | formatMediumDatetime }}</td>
+          <td>{{ vehicle.edited | formatMediumDatetime }}</td>
+          <td>{{ vehicle.name }}</td>
+          <td>{{ vehicle.model }}</td>
+          <td>{{ vehicle.manufacturer }}</td>
+          <td>{{ vehicle.costInCredits }}</td>
+          <td>{{ vehicle.length }}</td>
+          <td>{{ vehicle.maxAtmospheringSpeed }}</td>
+          <td>{{ vehicle.crew }}</td>
+          <td>{{ vehicle.passengers }}</td>
+          <td>{{ vehicle.cargoCapacity }}</td>
+          <td>{{ vehicle.consumables }}</td>
+          <td>{{ vehicle.vehicleClass }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/vehicle', vehicle.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

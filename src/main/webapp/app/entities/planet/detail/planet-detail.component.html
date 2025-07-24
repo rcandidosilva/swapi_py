@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="planet">
+      <h2 data-cy="planetDetailsHeading"><span>Planet</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ planet.id }}</span>
+        </dd>
+        <dt><span>Created</span></dt>
+        <dd>
+          <span>{{ planet.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Edited</span></dt>
+        <dd>
+          <span>{{ planet.edited | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ planet.name }}</span>
+        </dd>
+        <dt><span>Rotation Period</span></dt>
+        <dd>
+          <span>{{ planet.rotationPeriod }}</span>
+        </dd>
+        <dt><span>Orbital Period</span></dt>
+        <dd>
+          <span>{{ planet.orbitalPeriod }}</span>
+        </dd>
+        <dt><span>Diameter</span></dt>
+        <dd>
+          <span>{{ planet.diameter }}</span>
+        </dd>
+        <dt><span>Climate</span></dt>
+        <dd>
+          <span>{{ planet.climate }}</span>
+        </dd>
+        <dt><span>Gravity</span></dt>
+        <dd>
+          <span>{{ planet.gravity }}</span>
+        </dd>
+        <dt><span>Terrain</span></dt>
+        <dd>
+          <span>{{ planet.terrain }}</span>
+        </dd>
+        <dt><span>Surface Water</span></dt>
+        <dd>
+          <span>{{ planet.surfaceWater }}</span>
+        </dd>
+        <dt><span>Population</span></dt>
+        <dd>
+          <span>{{ planet.population }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="film">
+      <h2 data-cy="filmDetailsHeading"><span>Film</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ film.id }}</span>
+        </dd>
+        <dt><span>Created</span></dt>
+        <dd>
+          <span>{{ film.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Edited</span></dt>
+        <dd>
+          <span>{{ film.edited | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ film.title }}</span>
+        </dd>
+        <dt><span>Episode Id</span></dt>
+        <dd>
+          <span>{{ film.episodeId }}</span>
+        </dd>
+        <dt><span>Opening Crawl</span></dt>
+        <dd>
+          <span>{{ film.openingCrawl }}</span>
+        </dd>
+        <dt><span>Director</span></dt>
+        <dd>
+          <span>{{ film.director }}</span>
+        </dd>
+        <dt><span>Producer</span></dt>
+        <dd>
+          <span>{{ film.producer }}</span>
+        </dd>
+        <dt><span>Release Date</span></dt>
+        <dd>
+          <span>{{ film.releaseDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Planets</span></dt>
+        <dd>
+          <span *ngFor="let planets of film.planets; let last = last">
+            <a [routerLink]="['/planet', planets?.id, 'view']">{{ planets.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Characters</span></dt>
+        <dd>
+          <span *ngFor="let characters of film.characters; let last = last">
+            <a [routerLink]="['/person', characters?.id, 'view']">{{ characters.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Startships</span></dt>
+        <dd>
+          <span *ngFor="let startships of film.startships; let last = last">
+            <a [routerLink]="['/starship', startships?.id, 'view']">{{ startships.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Vehicles</span></dt>
+        <dd>
+          <span *ngFor="let vehicles of film.vehicles; let last = last">
+            <a [routerLink]="['/vehicle', vehicles?.id, 'view']">{{ vehicles.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Species</span></dt>
+        <dd>
+          <span *ngFor="let species of film.species; let last = last">
+            <a [routerLink]="['/species', species?.id, 'view']">{{ species.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

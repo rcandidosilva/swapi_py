@@ -1,0 +1,68 @@
+<div>
+  <h2 id="page-heading" data-cy="PlanetHeading">
+    <span>Planets</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="planets?.length === 0">
+    <span>No planets found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="planets && planets.length > 0">
+    <table class="table table-striped table-hover" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Id</span></th>
+          <th scope="col"><span>Created</span></th>
+          <th scope="col"><span>Edited</span></th>
+          <th scope="col"><span>Name</span></th>
+          <th scope="col"><span>Rotation Period</span></th>
+          <th scope="col"><span>Orbital Period</span></th>
+          <th scope="col"><span>Diameter</span></th>
+          <th scope="col"><span>Climate</span></th>
+          <th scope="col"><span>Gravity</span></th>
+          <th scope="col"><span>Terrain</span></th>
+          <th scope="col"><span>Surface Water</span></th>
+          <th scope="col"><span>Population</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let planet of planets; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/planet', planet.id, 'view']">{{ planet.id }}</a>
+          </td>
+          <td>{{ planet.created | formatMediumDatetime }}</td>
+          <td>{{ planet.edited | formatMediumDatetime }}</td>
+          <td>{{ planet.name }}</td>
+          <td>{{ planet.rotationPeriod }}</td>
+          <td>{{ planet.orbitalPeriod }}</td>
+          <td>{{ planet.diameter }}</td>
+          <td>{{ planet.climate }}</td>
+          <td>{{ planet.gravity }}</td>
+          <td>{{ planet.terrain }}</td>
+          <td>{{ planet.surfaceWater }}</td>
+          <td>{{ planet.population }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/planet', planet.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

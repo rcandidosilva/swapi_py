@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="person">
+      <h2 data-cy="personDetailsHeading"><span>Person</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ person.id }}</span>
+        </dd>
+        <dt><span>Created</span></dt>
+        <dd>
+          <span>{{ person.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Edited</span></dt>
+        <dd>
+          <span>{{ person.edited | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ person.name }}</span>
+        </dd>
+        <dt><span>Height</span></dt>
+        <dd>
+          <span>{{ person.height }}</span>
+        </dd>
+        <dt><span>Mass</span></dt>
+        <dd>
+          <span>{{ person.mass }}</span>
+        </dd>
+        <dt><span>Hair Color</span></dt>
+        <dd>
+          <span>{{ person.hairColor }}</span>
+        </dd>
+        <dt><span>Skin Color</span></dt>
+        <dd>
+          <span>{{ person.skinColor }}</span>
+        </dd>
+        <dt><span>Eyey Color</span></dt>
+        <dd>
+          <span>{{ person.eyeyColor }}</span>
+        </dd>
+        <dt><span>Birth Year</span></dt>
+        <dd>
+          <span>{{ person.birthYear }}</span>
+        </dd>
+        <dt><span>Gender</span></dt>
+        <dd>
+          <span>{{ person.gender }}</span>
+        </dd>
+        <dt><span>Homeworld</span></dt>
+        <dd>
+          <div *ngIf="person.homeworld">
+            <a [routerLink]="['/planet', person.homeworld?.id, 'view']">{{ person.homeworld?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Species</span></dt>
+        <dd>
+          <span *ngFor="let species of person.species; let last = last">
+            <a [routerLink]="['/species', species?.id, 'view']">{{ species.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Vehicles</span></dt>
+        <dd>
+          <span *ngFor="let vehicles of person.vehicles; let last = last">
+            <a [routerLink]="['/vehicle', vehicles?.id, 'view']">{{ vehicles.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span>Starships</span></dt>
+        <dd>
+          <span *ngFor="let starships of person.starships; let last = last">
+            <a [routerLink]="['/starship', starships?.id, 'view']">{{ starships.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Film.
+    -->
+    <changeSet id="20250724231557-1" author="jhipster">
+        <createTable tableName="film">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="episode_id" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="opening_crawl" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="director" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="producer" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="release_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="film" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="film" columnName="edited" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <changeSet id="20250724231557-1-relations" author="jhipster">
+
+        <createTable tableName="rel_film__planets">
+            <column name="planets_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="film_id, planets_id" tableName="rel_film__planets"/>
+
+        <createTable tableName="rel_film__characters">
+            <column name="characters_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="film_id, characters_id" tableName="rel_film__characters"/>
+
+        <createTable tableName="rel_film__startships">
+            <column name="startships_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="film_id, startships_id" tableName="rel_film__startships"/>
+
+        <createTable tableName="rel_film__vehicles">
+            <column name="vehicles_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="film_id, vehicles_id" tableName="rel_film__vehicles"/>
+
+        <createTable tableName="rel_film__species">
+            <column name="species_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="film_id, species_id" tableName="rel_film__species"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20250724231557-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/film.csv"
+                  separator=";"
+                  tableName="film"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="created" type="date"/>
+            <column name="edited" type="date"/>
+            <column name="title" type="string"/>
+            <column name="episode_id" type="numeric"/>
+            <column name="opening_crawl" type="string"/>
+            <column name="director" type="string"/>
+            <column name="producer" type="string"/>
+            <column name="release_date" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

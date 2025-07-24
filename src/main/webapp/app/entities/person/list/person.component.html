@@ -1,0 +1,93 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonHeading">
+    <span>People</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="people?.length === 0">
+    <span>No people found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="people && people.length > 0">
+    <table class="table table-striped table-hover" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Id</span></th>
+          <th scope="col"><span>Created</span></th>
+          <th scope="col"><span>Edited</span></th>
+          <th scope="col"><span>Name</span></th>
+          <th scope="col"><span>Height</span></th>
+          <th scope="col"><span>Mass</span></th>
+          <th scope="col"><span>Hair Color</span></th>
+          <th scope="col"><span>Skin Color</span></th>
+          <th scope="col"><span>Eyey Color</span></th>
+          <th scope="col"><span>Birth Year</span></th>
+          <th scope="col"><span>Gender</span></th>
+          <th scope="col"><span>Homeworld</span></th>
+          <th scope="col"><span>Species</span></th>
+          <th scope="col"><span>Vehicles</span></th>
+          <th scope="col"><span>Starships</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of people; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/person', person.id, 'view']">{{ person.id }}</a>
+          </td>
+          <td>{{ person.created | formatMediumDatetime }}</td>
+          <td>{{ person.edited | formatMediumDatetime }}</td>
+          <td>{{ person.name }}</td>
+          <td>{{ person.height }}</td>
+          <td>{{ person.mass }}</td>
+          <td>{{ person.hairColor }}</td>
+          <td>{{ person.skinColor }}</td>
+          <td>{{ person.eyeyColor }}</td>
+          <td>{{ person.birthYear }}</td>
+          <td>{{ person.gender }}</td>
+          <td>
+            <div *ngIf="person.homeworld">
+              <a [routerLink]="['/planet', person.homeworld?.id, 'view']">{{ person.homeworld?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <span *ngFor="let species of person.species; let last = last">
+              <a class="form-control-static" [routerLink]="['/species', species.id, 'view']">{{ species.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let vehicles of person.vehicles; let last = last">
+              <a class="form-control-static" [routerLink]="['/vehicle', vehicles.id, 'view']">{{ vehicles.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let starships of person.starships; let last = last">
+              <a class="form-control-static" [routerLink]="['/starship', starships.id, 'view']">{{ starships.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/person', person.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

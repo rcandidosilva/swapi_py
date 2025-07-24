@@ -1,0 +1,79 @@
+<div>
+  <h2 id="page-heading" data-cy="SpeciesHeading">
+    <span>Species</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="species?.length === 0">
+    <span>No species found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="species && species.length > 0">
+    <table class="table table-striped table-hover" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Id</span></th>
+          <th scope="col"><span>Created</span></th>
+          <th scope="col"><span>Edited</span></th>
+          <th scope="col"><span>Name</span></th>
+          <th scope="col"><span>Classification</span></th>
+          <th scope="col"><span>Designation</span></th>
+          <th scope="col"><span>Average Height</span></th>
+          <th scope="col"><span>Skin Colors</span></th>
+          <th scope="col"><span>Hair Colors</span></th>
+          <th scope="col"><span>Eye Colors</span></th>
+          <th scope="col"><span>Average Lifespan</span></th>
+          <th scope="col"><span>Languages</span></th>
+          <th scope="col"><span>Homeworld</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let species of species; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/species', species.id, 'view']">{{ species.id }}</a>
+          </td>
+          <td>{{ species.created | formatMediumDatetime }}</td>
+          <td>{{ species.edited | formatMediumDatetime }}</td>
+          <td>{{ species.name }}</td>
+          <td>{{ species.classification }}</td>
+          <td>{{ species.designation }}</td>
+          <td>{{ species.averageHeight }}</td>
+          <td>{{ species.skinColors }}</td>
+          <td>{{ species.hairColors }}</td>
+          <td>{{ species.eyeColors }}</td>
+          <td>{{ species.averageLifespan }}</td>
+          <td>{{ species.languages }}</td>
+          <td>
+            <div *ngIf="species.homeworld">
+              <a [routerLink]="['/planet', species.homeworld?.id, 'view']">{{ species.homeworld?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/species', species.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

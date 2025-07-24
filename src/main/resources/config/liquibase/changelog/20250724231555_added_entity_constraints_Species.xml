@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Species.
+    -->
+    <changeSet id="20250724231555-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="homeworld_id"
+                                 baseTableName="species"
+                                 constraintName="fk_species__homeworld_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planet"/>
+    </changeSet>
+</databaseChangeLog>

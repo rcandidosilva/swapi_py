@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="starship">
+      <h2 data-cy="starshipDetailsHeading"><span>Starship</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ starship.id }}</span>
+        </dd>
+        <dt><span>Created</span></dt>
+        <dd>
+          <span>{{ starship.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Edited</span></dt>
+        <dd>
+          <span>{{ starship.edited | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ starship.name }}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+          <span>{{ starship.model }}</span>
+        </dd>
+        <dt><span>Manufacturer</span></dt>
+        <dd>
+          <span>{{ starship.manufacturer }}</span>
+        </dd>
+        <dt><span>Cost In Credits</span></dt>
+        <dd>
+          <span>{{ starship.costInCredits }}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+          <span>{{ starship.length }}</span>
+        </dd>
+        <dt><span>Max Atmosphering Speed</span></dt>
+        <dd>
+          <span>{{ starship.maxAtmospheringSpeed }}</span>
+        </dd>
+        <dt><span>Crew</span></dt>
+        <dd>
+          <span>{{ starship.crew }}</span>
+        </dd>
+        <dt><span>Passengers</span></dt>
+        <dd>
+          <span>{{ starship.passengers }}</span>
+        </dd>
+        <dt><span>Cargo Capacity</span></dt>
+        <dd>
+          <span>{{ starship.cargoCapacity }}</span>
+        </dd>
+        <dt><span>Consumables</span></dt>
+        <dd>
+          <span>{{ starship.consumables }}</span>
+        </dd>
+        <dt><span>Hyperdrive Rating</span></dt>
+        <dd>
+          <span>{{ starship.hyperdriveRating }}</span>
+        </dd>
+        <dt><span>Mglt</span></dt>
+        <dd>
+          <span>{{ starship.mglt }}</span>
+        </dd>
+        <dt><span>Startship Class</span></dt>
+        <dd>
+          <span>{{ starship.startshipClass }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

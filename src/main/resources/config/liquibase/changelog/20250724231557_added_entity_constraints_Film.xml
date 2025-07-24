@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Film.
+    -->
+    <changeSet id="20250724231557-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="film_id"
+                                 baseTableName="rel_film__planets"
+                                 constraintName="fk_rel_film__planets__film_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="film"/>
+
+        <addForeignKeyConstraint baseColumnNames="planets_id"
+                                 baseTableName="rel_film__planets"
+                                 constraintName="fk_rel_film__planets__planets_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planet"/>
+
+        <addForeignKeyConstraint baseColumnNames="film_id"
+                                 baseTableName="rel_film__characters"
+                                 constraintName="fk_rel_film__characters__film_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="film"/>
+
+        <addForeignKeyConstraint baseColumnNames="characters_id"
+                                 baseTableName="rel_film__characters"
+                                 constraintName="fk_rel_film__characters__characters_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="film_id"
+                                 baseTableName="rel_film__startships"
+                                 constraintName="fk_rel_film__startships__film_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="film"/>
+
+        <addForeignKeyConstraint baseColumnNames="startships_id"
+                                 baseTableName="rel_film__startships"
+                                 constraintName="fk_rel_film__startships__startships_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="starship"/>
+
+        <addForeignKeyConstraint baseColumnNames="film_id"
+                                 baseTableName="rel_film__vehicles"
+                                 constraintName="fk_rel_film__vehicles__film_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="film"/>
+
+        <addForeignKeyConstraint baseColumnNames="vehicles_id"
+                                 baseTableName="rel_film__vehicles"
+                                 constraintName="fk_rel_film__vehicles__vehicles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vehicle"/>
+
+        <addForeignKeyConstraint baseColumnNames="film_id"
+                                 baseTableName="rel_film__species"
+                                 constraintName="fk_rel_film__species__film_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="film"/>
+
+        <addForeignKeyConstraint baseColumnNames="species_id"
+                                 baseTableName="rel_film__species"
+                                 constraintName="fk_rel_film__species__species_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="species"/>
+    </changeSet>
+</databaseChangeLog>

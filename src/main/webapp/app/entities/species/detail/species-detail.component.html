@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="species">
+      <h2 data-cy="speciesDetailsHeading"><span>Species</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ species.id }}</span>
+        </dd>
+        <dt><span>Created</span></dt>
+        <dd>
+          <span>{{ species.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Edited</span></dt>
+        <dd>
+          <span>{{ species.edited | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ species.name }}</span>
+        </dd>
+        <dt><span>Classification</span></dt>
+        <dd>
+          <span>{{ species.classification }}</span>
+        </dd>
+        <dt><span>Designation</span></dt>
+        <dd>
+          <span>{{ species.designation }}</span>
+        </dd>
+        <dt><span>Average Height</span></dt>
+        <dd>
+          <span>{{ species.averageHeight }}</span>
+        </dd>
+        <dt><span>Skin Colors</span></dt>
+        <dd>
+          <span>{{ species.skinColors }}</span>
+        </dd>
+        <dt><span>Hair Colors</span></dt>
+        <dd>
+          <span>{{ species.hairColors }}</span>
+        </dd>
+        <dt><span>Eye Colors</span></dt>
+        <dd>
+          <span>{{ species.eyeColors }}</span>
+        </dd>
+        <dt><span>Average Lifespan</span></dt>
+        <dd>
+          <span>{{ species.averageLifespan }}</span>
+        </dd>
+        <dt><span>Languages</span></dt>
+        <dd>
+          <span>{{ species.languages }}</span>
+        </dd>
+        <dt><span>Homeworld</span></dt>
+        <dd>
+          <div *ngIf="species.homeworld">
+            <a [routerLink]="['/planet', species.homeworld?.id, 'view']">{{ species.homeworld?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+    </div>
+  </div>
+</div>

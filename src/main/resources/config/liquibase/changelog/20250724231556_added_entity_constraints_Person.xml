@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Person.
+    -->
+    <changeSet id="20250724231556-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="homeworld_id"
+                                 baseTableName="person"
+                                 constraintName="fk_person__homeworld_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planet"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="rel_person__species"
+                                 constraintName="fk_rel_person__species__person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="species_id"
+                                 baseTableName="rel_person__species"
+                                 constraintName="fk_rel_person__species__species_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="species"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="rel_person__vehicles"
+                                 constraintName="fk_rel_person__vehicles__person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="vehicles_id"
+                                 baseTableName="rel_person__vehicles"
+                                 constraintName="fk_rel_person__vehicles__vehicles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vehicle"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="rel_person__starships"
+                                 constraintName="fk_rel_person__starships__person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="starships_id"
+                                 baseTableName="rel_person__starships"
+                                 constraintName="fk_rel_person__starships__starships_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="starship"/>
+    </changeSet>
+</databaseChangeLog>

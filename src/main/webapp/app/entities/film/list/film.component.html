@@ -1,0 +1,97 @@
+<div>
+  <h2 id="page-heading" data-cy="FilmHeading">
+    <span>Films</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="films?.length === 0">
+    <span>No films found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="films && films.length > 0">
+    <table class="table table-striped table-hover" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>Id</span></th>
+          <th scope="col"><span>Created</span></th>
+          <th scope="col"><span>Edited</span></th>
+          <th scope="col"><span>Title</span></th>
+          <th scope="col"><span>Episode Id</span></th>
+          <th scope="col"><span>Opening Crawl</span></th>
+          <th scope="col"><span>Director</span></th>
+          <th scope="col"><span>Producer</span></th>
+          <th scope="col"><span>Release Date</span></th>
+          <th scope="col"><span>Planets</span></th>
+          <th scope="col"><span>Characters</span></th>
+          <th scope="col"><span>Startships</span></th>
+          <th scope="col"><span>Vehicles</span></th>
+          <th scope="col"><span>Species</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let film of films; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/film', film.id, 'view']">{{ film.id }}</a>
+          </td>
+          <td>{{ film.created | formatMediumDatetime }}</td>
+          <td>{{ film.edited | formatMediumDatetime }}</td>
+          <td>{{ film.title }}</td>
+          <td>{{ film.episodeId }}</td>
+          <td>{{ film.openingCrawl }}</td>
+          <td>{{ film.director }}</td>
+          <td>{{ film.producer }}</td>
+          <td>{{ film.releaseDate | formatMediumDate }}</td>
+          <td>
+            <span *ngFor="let planets of film.planets; let last = last">
+              <a class="form-control-static" [routerLink]="['/planet', planets.id, 'view']">{{ planets.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let characters of film.characters; let last = last">
+              <a class="form-control-static" [routerLink]="['/person', characters.id, 'view']">{{ characters.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let startships of film.startships; let last = last">
+              <a class="form-control-static" [routerLink]="['/starship', startships.id, 'view']">{{ startships.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let vehicles of film.vehicles; let last = last">
+              <a class="form-control-static" [routerLink]="['/vehicle', vehicles.id, 'view']">{{ vehicles.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td>
+            <span *ngFor="let species of film.species; let last = last">
+              <a class="form-control-static" [routerLink]="['/species', species.id, 'view']">{{ species.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/film', film.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

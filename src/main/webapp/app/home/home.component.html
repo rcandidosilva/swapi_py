@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="display-4"><span>Welcome, Python Hipster!</span> (Swapi Py)</h1>
+
+    <p class="lead">This is your homepage</p>
+
+    <div [ngSwitch]="account !== null">
+      <div class="alert alert-success" *ngSwitchCase="true">
+        <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
+      </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false">
+        <span>If you want to </span>
+        <a class="alert-link" (click)="login()">sign in</a
+        ><span
+          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+          password="user").</span
+        >
+      </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false">
+        <span>You don't have an account yet?</span>&nbsp;
+        <a class="alert-link" routerLink="account/register">Register a new account</a>
+      </div>
+    </div>
+
+    <p>If you have any question on PyHipster:</p>
+
+    <ul>
+      <li><a href="https://github.com/pyhipster/generator-pyhipster" target="_blank" rel="noopener noreferrer">PyHipster homepage</a></li>
+      <li>
+        <a href="https://stackoverflow.com/tags/pyhipster/info" target="_blank" rel="noopener noreferrer">PyHipster on Stack Overflow</a>
+      </li>
+      <li>
+        <a href="https://github.com/pyhipster/generator-pyhipster/issues?state=open" target="_blank" rel="noopener noreferrer"
+          >PyHipster bug tracker</a
+        >
+      </li>
+      <li><a href="https://twitter.com/py_hipster" target="_blank" rel="noopener noreferrer">Follow @py_hipster on Twitter</a></li>
+      <li><a href="https://techhub.social/@pyhipster" target="_blank" rel="noopener noreferrer">Follow @pyhipster on Mastodon</a></li>
+    </ul>
+
+    <p>
+      <span>If you like PyHipster, don't forget to give us a star on</span>
+      <a href="https://github.com/pyhipster/generator-pyhipster" target="_blank" rel="noopener noreferrer">GitHub</a>!
+    </p>
+  </div>
+</div>
