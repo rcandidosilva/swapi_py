@@ -2,14 +2,12 @@
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
 
-In the project root, PyHipster generates configuration files for tools like git, prettier, eslint, husk, and others that are well known and you can find references in the web.
+In the project root, there are configuration files for tools like git, prettier, eslint, husk, and others that are well known and you can find references in the web.
 
 `/src/*` structure follows default Python structure.
 
 - `.yo-rc.json` - Yeoman configuration file
-  PyHipster configuration is stored in this file at `generator-pyhipster` key.
-- `.pyhipster/*.json` - PyHipster entity configuration files
-- `requirements.txt` - PyHipster Python module dependencies
+- `requirements.txt` - Python module dependencies
 
 ## Development
 
@@ -29,7 +27,7 @@ The `npm run` command will list all of the scripts available to run for this pro
 
 ## Testing
 
-PyHipster generates unit and functional test cases for the default user and authority entities at project generation. To run the tests, issue the following command
+There are unit and functional test cases for the default user and authority entities at project generation. To run the tests, issue the following command
 
 ```bash
 $> poetry run pytest
@@ -59,7 +57,7 @@ $> poetry run task security_scan
 $> poetry run task code_formatting
 ```
 
-For further instructions on how to develop with PyHipster, have a look at the documentation.
+For further instructions on how to develop, have a look at the documentation.
 
 [Python](https://www.python.org/)
 [Node.js](https://nodejs.org/)
