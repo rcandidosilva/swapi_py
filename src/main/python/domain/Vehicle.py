@@ -10,8 +10,8 @@ from DatabaseConfig import db
 class Vehicle(db.Model):
     __tablename__ = "Vehicle"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    created = db.Column(db.ZonedDateTime)
-    edited = db.Column(db.ZonedDateTime)
+    created = db.Column(db.DateTime)
+    edited = db.Column(db.DateTime)
     name = db.Column(db.String( 255))
     model = db.Column(db.String( 255))
     manufacturer = db.Column(db.String( 255))

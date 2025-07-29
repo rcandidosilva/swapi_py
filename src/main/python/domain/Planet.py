@@ -11,8 +11,8 @@ from DatabaseConfig import db
 class Planet(db.Model):
     __tablename__ = "Planet"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    created = db.Column(db.ZonedDateTime)
-    edited = db.Column(db.ZonedDateTime)
+    created = db.Column(db.DateTime)
+    edited = db.Column(db.DateTime)
     name = db.Column(db.String( 255))
     rotation_period = db.Column(db.Integer)
     orbital_period = db.Column(db.Integer)

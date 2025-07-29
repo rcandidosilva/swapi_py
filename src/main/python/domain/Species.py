@@ -11,8 +11,8 @@ from DatabaseConfig import db
 class Species(db.Model):
     __tablename__ = "Species"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    created = db.Column(db.ZonedDateTime)
-    edited = db.Column(db.ZonedDateTime)
+    created = db.Column(db.DateTime)
+    edited = db.Column(db.DateTime)
     name = db.Column(db.String( 255))
     classification = db.Column(db.String( 255))
     designation = db.Column(db.String( 255))

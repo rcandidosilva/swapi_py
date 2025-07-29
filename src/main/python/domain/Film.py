@@ -33,8 +33,8 @@ film_species = db.Table('film_species',
 class Film(db.Model):
     __tablename__ = "Film"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    created = db.Column(db.ZonedDateTime)
-    edited = db.Column(db.ZonedDateTime)
+    created = db.Column(db.DateTime)
+    edited = db.Column(db.DateTime)
     title = db.Column(db.String( 255))
     episode_id = db.Column(db.Integer)
     opening_crawl = db.Column(db.String( 255))
