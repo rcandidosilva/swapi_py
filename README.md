@@ -316,5 +316,3 @@ The application follows modern development practices with:
 - Scalable architecture design
 - Comprehensive error handling
 - Detailed logging and debugging support
-
-For technical support and contributions, refer to the project repository and development guidelines.
